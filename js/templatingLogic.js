@@ -33,3 +33,32 @@ var contextData = {
 };
 var contextCompiledHtml = contextTemplate(contextData);
 document.getElementById('context-content-placeholder').innerHTML = contextCompiledHtml;
+
+Handlebars.registerHelper('capitalize', function(str){
+  str = str || '';
+  return str.slice(0,1).toUpperCase() + str.slice(1);
+});
+var helperTemplateScript = document.getElementById('built-in-helpers-template').innerHTML.trim();
+var helperTemplate = Handlebars.compile(helperTemplateScript);
+var helperContext = {
+  animals:[
+    {
+      name: "cow",
+      noise: "moooo"
+    },
+    {
+      name: "cat",
+      noise: "meow"
+    },
+    {
+      name: "fish",
+      noise: ""
+    },
+    {
+      name: "farmer",
+      noise: "Get off my property!"
+    }
+  ]
+};
+var helperCompiledHtml = helperTemplate(helperContext);
+document.getElementById('content-placeholder').innerHTML = helperCompiledHtml;

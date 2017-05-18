@@ -62,3 +62,14 @@ var helperContext = {
 };
 var helperCompiledHtml = helperTemplate(helperContext);
 document.getElementById('content-placeholder').innerHTML = helperCompiledHtml;
+
+var blockHelperTemplateScript = document.getElementById('block-expressions-template').innerHTML.trim();
+Handlebars.registerHelper('uppercase', function(options) {
+  return options.fn(this).toUpperCase();
+});
+var blockHelperTemplate = Handlebars.compile(blockHelperTemplateScript);
+var blockHelperContext = {
+  "code": "up up down down left right left right b a select start"
+};
+var blockHelperCompiledHtml = blockHelperTemplate(blockHelperContext);
+document.getElementById('block-helpers-placeholder').innerHTML = blockHelperCompiledHtml;

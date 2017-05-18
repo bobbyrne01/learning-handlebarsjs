@@ -19,3 +19,17 @@ var expressionsContext = {
 };
 var expressionsCompiledHtml = expressionsTemplate(expressionsContext);
 document.getElementById('expressions-content-placeholder').innerHTML = expressionsCompiledHtml;
+
+var contextTemplateScript = document.getElementById('example-template').innerHTML.trim();
+var contextTemplate = Handlebars.compile(contextTemplateScript);
+var contextData = {
+  people: [
+    { firstName: 'Homer', lastName: 'Simpson' },
+    { firstName: 'Peter', lastName: 'Griffin' },
+    { firstName: 'Eric', lastName: 'Cartman' },
+    { firstName: 'Kenny', lastName: 'McCormick' },
+    { firstName: 'Bart', lastName: 'Simpson' }
+  ]
+};
+var contextCompiledHtml = contextTemplate(contextData);
+document.getElementById('context-content-placeholder').innerHTML = contextCompiledHtml;

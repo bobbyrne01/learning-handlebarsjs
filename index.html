@@ -23,6 +23,14 @@
       {{{example}}}
     </script>
     <div id="expressions-content-placeholder"></div>
+    <hr>
+
+    <script id="example-template" type="text/x-handlebars-template">
+      {{#each people}}
+        <p>{{firstName}} {{lastName}}</p>
+      {{/each}}
+    </script>
+    <div id="context-content-placeholder"></div>
 
     <script src="js/templatingLogic.js"></script>
    </body>

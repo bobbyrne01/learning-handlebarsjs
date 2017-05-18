@@ -1,0 +1,21 @@
+{
+  "name": "learning-handlebarsjs",
+  "authors": [
+    "Robert Byrne <bobbyrne01@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.8"
+  }
+}

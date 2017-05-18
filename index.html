@@ -12,8 +12,17 @@
     <script id="address-template" type="text/x-handlebars-template">
       <p>You can find me in {{city}}. My address is {{number}} {{street}}.</p>
     </script>
+    <div id="address-content-placeholder"></div>
+    <hr>
 
-    <div id="content-placeholder"></div>
+    <script id="expressions-template" type="text/x-handlebars-template">
+      {{description.escaped}}
+      {{example}}
+      <br><br>
+      {{description.unescaped}}
+      {{{example}}}
+    </script>
+    <div id="expressions-content-placeholder"></div>
 
     <script src="js/templatingLogic.js"></script>
    </body>

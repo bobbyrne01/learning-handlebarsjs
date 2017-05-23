@@ -1,27 +1,27 @@
-var addressTemplateScript = document.getElementById('address-template').innerHTML.trim();
-var addressTemplate = Handlebars.compile(addressTemplateScript);
+'use strict';
+
 var addressContext = {
-  "city": "Dublin",
-  "street": "River road",
-  "number": "1"
+  'city': 'Dublin',
+  'street': 'River road',
+  'number': '1'
 };
-var addressCompiledHtml = addressTemplate(addressContext);
-document.getElementById('address-content-placeholder').innerHTML = addressCompiledHtml;
+var templateScript = getTemplateScriptFromElement('address-template');
+var compiledHtml = compileTemplateWithData(templateScript, addressContext);
+document.getElementById('address-content-placeholder').innerHTML = compiledHtml;
 
-var expressionsTemplateScript = document.getElementById('expressions-template').innerHTML.trim();
-var expressionsTemplate = Handlebars.compile(expressionsTemplateScript);
+
 var expressionsContext = {
-  "description": {
-    "escaped": "Using {{}} brackets will result in escaped HTML:",
-    "unescaped": "Using {{{}}} will leave the context as it is:"
+  'description': {
+    'escaped': 'Using {{}} brackets will result in escaped HTML:',
+    'unescaped': 'Using {{{}}} will leave the context as it is:'
   },
-  "example": "<button> Hello </button>"
+  'example': '<button> Hello </button>'
 };
-var expressionsCompiledHtml = expressionsTemplate(expressionsContext);
-document.getElementById('expressions-content-placeholder').innerHTML = expressionsCompiledHtml;
+var templateScript = getTemplateScriptFromElement('expressions-template');
+var compiledHtml = compileTemplateWithData(templateScript, expressionsContext);
+document.getElementById('expressions-content-placeholder').innerHTML = compiledHtml;
 
-var contextTemplateScript = document.getElementById('example-template').innerHTML.trim();
-var contextTemplate = Handlebars.compile(contextTemplateScript);
+
 var contextData = {
   people: [
     { firstName: 'Homer', lastName: 'Simpson' },
@@ -31,45 +31,46 @@ var contextData = {
     { firstName: 'Bart', lastName: 'Simpson' }
   ]
 };
-var contextCompiledHtml = contextTemplate(contextData);
-document.getElementById('context-content-placeholder').innerHTML = contextCompiledHtml;
+var templateScript = getTemplateScriptFromElement('example-template');
+var compiledHtml = compileTemplateWithData(templateScript, contextData);
+document.getElementById('context-content-placeholder').innerHTML = compiledHtml;
 
+
+var helperContext = {
+  animals:[
+    {
+      name: 'cow',
+      noise: 'moooo'
+    },
+    {
+      name: 'cat',
+      noise: 'meow'
+    },
+    {
+      name: 'fish',
+      noise: ''
+    },
+    {
+      name: 'farmer',
+      noise: 'Get off my property!'
+    }
+  ]
+};
 Handlebars.registerHelper('capitalize', function(str){
   str = str || '';
   return str.slice(0,1).toUpperCase() + str.slice(1);
 });
-var helperTemplateScript = document.getElementById('built-in-helpers-template').innerHTML.trim();
-var helperTemplate = Handlebars.compile(helperTemplateScript);
-var helperContext = {
-  animals:[
-    {
-      name: "cow",
-      noise: "moooo"
-    },
-    {
-      name: "cat",
-      noise: "meow"
-    },
-    {
-      name: "fish",
-      noise: ""
-    },
-    {
-      name: "farmer",
-      noise: "Get off my property!"
-    }
-  ]
-};
-var helperCompiledHtml = helperTemplate(helperContext);
-document.getElementById('content-placeholder').innerHTML = helperCompiledHtml;
+var templateScript = getTemplateScriptFromElement('built-in-helpers-template');
+var compiledHtml = compileTemplateWithData(templateScript, helperContext);
+document.getElementById('content-placeholder').innerHTML = compiledHtml;
 
-var blockHelperTemplateScript = document.getElementById('block-expressions-template').innerHTML.trim();
+
+var blockHelperContext = {
+  'code': 'up up down down left right left right b a select start'
+};
 Handlebars.registerHelper('uppercase', function(options) {
   return options.fn(this).toUpperCase();
 });
-var blockHelperTemplate = Handlebars.compile(blockHelperTemplateScript);
-var blockHelperContext = {
-  "code": "up up down down left right left right b a select start"
-};
-var blockHelperCompiledHtml = blockHelperTemplate(blockHelperContext);
-document.getElementById('block-helpers-placeholder').innerHTML = blockHelperCompiledHtml;
+var templateScript = getTemplateScriptFromElement('block-expressions-template');
+var compiledHtml = compileTemplateWithData(templateScript, blockHelperContext);
+document.getElementById('block-helpers-placeholder').innerHTML = compiledHtml;
